@@ -12,13 +12,25 @@ import {
   TextInput,
   View
 } from 'react-native';
+import TestInput from './ui/components/testComponent';
 
 export default class AwesomeProject extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Jisho Native'
+    }
+  }
+
+  changeTitle(value) {
+    this.setState({ title: value });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Hello there Rena!
+          {this.state.title}
         </Text>
         <Text style={styles.instructions}>
           I am building my first ever android app!
@@ -26,30 +38,6 @@ export default class AwesomeProject extends Component {
         <TestInput />
       </View>
     );
-  }
-}
-
-class TestInput extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state ={
-      text: 'Try type something'
-    }
-  }
-
-  handleChange(event) {
-    this.setState({ text: event.target.value})
-  }
-
-  render() {
-    return(
-      <TextInput
-      style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300}}
-      onChange={this.handleChange}
-      value={this.state.text}
-      />
-    )
   }
 }
 
