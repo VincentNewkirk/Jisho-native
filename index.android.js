@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
@@ -22,12 +23,33 @@ export default class AwesomeProject extends Component {
         <Text style={styles.instructions}>
           I am building my first ever android app!
         </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <TestInput />
       </View>
     );
+  }
+}
+
+class TestInput extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state ={
+      text: 'Try type something'
+    }
+  }
+
+  handleChange(event) {
+    this.setState({ text: event.target.value})
+  }
+
+  render() {
+    return(
+      <TextInput
+      style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300}}
+      onChange={this.handleChange}
+      value={this.state.text}
+      />
+    )
   }
 }
 
